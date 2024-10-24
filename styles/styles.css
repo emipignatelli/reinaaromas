@@ -10,7 +10,7 @@ header {
     align-items: center;
     padding: 10px 20px;
     background-color: #f8f8f8;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #a5bde2;
 }
 
 .logo {
@@ -67,7 +67,7 @@ header {
         display: none;
     }
     .dropdown {
-        left: -95px; /* Ajusta la posición a la izquierda */
+        left: -110px; /* Ajusta la posición a la izquierda */
     }
 }
 
