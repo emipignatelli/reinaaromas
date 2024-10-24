@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -39,7 +40,8 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     min-width: 150px; /* Ancho mínimo para el dropdown */
     z-index: 1000; /* Asegura que esté sobre otros elementos */
-    left: -95px; /* Ajusta la posición a la izquierda */
+    right: 0; /* Posiciona el dropdown a la derecha del contenedor */
+    margin-top: 5px; /* Espacio entre el botón y el dropdown */
 }
 
 .dropdown a {
@@ -47,8 +49,6 @@ header {
     text-decoration: none;
     color: #333;
     white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-    overflow: hidden; /* Asegura que el texto no se desborde */
-    text-overflow: ellipsis; /* Opcional: puntos suspensivos si el texto es muy largo */
 }
 
 .dropdown a:hover {
@@ -56,6 +56,33 @@ header {
 }
 
 /* Media Queries */
+
+/* Para teléfonos móviles (hasta 480px) */
+@media (max-width: 480px) {
+    .mobile-menu {
+        display: flex;
+        position: relative;
+    }
+    .desktop-icons {
+        display: none;
+    }
+    .dropdown {
+        left: -20px; /* Ajusta la posición a la izquierda */
+    }
+}
+
+/* Para tabletas (481px a 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    .mobile-menu {
+        display: flex;
+        position: relative;
+    }
+    .desktop-icons {
+        display: none;
+    }
+}
+
+/* Para pantallas de 768px en adelante */
 @media (min-width: 768px) {
     .desktop-icons {
         display: flex;
@@ -63,15 +90,5 @@ header {
     }
     .mobile-menu {
         display: none;
-    }
-}
-
-@media (max-width: 767px) {
-    .desktop-icons {
-        display: none;
-    }
-    .mobile-menu {
-        display: flex;
-        position: relative;
     }
 }
