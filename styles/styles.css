@@ -2,6 +2,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: cadetblue;
 }
 
 header {
@@ -9,21 +10,32 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #f8f8f8;
+    background-color: white;
     border-bottom: 1px solid #a5bde2;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
+    margin-left: 20px; /* Espacio a la izquierda */
 }
 
 .desktop-icons {
-    display: none;
+    display: flex;
+    gap: 15px;
+    margin-right: 50px; /* Espacio a la derecha */
+    margin-left: auto; /* Empuja los iconos a la derecha */
 }
 
 .mobile-menu {
-    display: none;
+    display: flex;
+    position: relative; /* Asegura que el dropdown se posicione en relación con este contenedor */
+    justify-content: flex-end; /* Alinea a la derecha */
+    width: 100%; /* Asegura que ocupe el ancho completo */
+    right: 30%;
 }
 
 .hamburger {
@@ -31,28 +43,57 @@ header {
     font-size: 24px;
 }
 
+/* Dropdown */
 .dropdown {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Mantener oculto por defecto */
+    flex-direction: column; /* Cambia a dirección vertical */
+    position: absolute; /* Asegúrate de que esté posicionado */
+    background-color: white; /* Fondo del dropdown */
+    border: 1px solid #ddd; /* Borde del dropdown */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra del dropdown */
     min-width: 150px; /* Ancho mínimo para el dropdown */
     z-index: 1000; /* Asegura que esté sobre otros elementos */
-    right: 0; /* Posiciona el dropdown a la derecha del contenedor */
-    margin-top: 5px; /* Espacio entre el botón y el dropdown */
+    right: 50%; /* Mantiene alineado a la derecha */
+    margin-top: 30px; /* Espacio entre el botón y el dropdown */
+    justify-content: center;
+    transform: translate(170%);
 }
 
 .dropdown a {
-    padding: 10px 15px; /* Ajuste de padding */
+    padding: 10px 15px;
     text-decoration: none;
     color: #333;
-    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    white-space: nowrap;
 }
 
 .dropdown a:hover {
     background-color: #f0f0f0;
+}
+
+/* Estilo del formulario */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px; /* Espacio debajo del header */
+    border: rgb(86, 168, 245) solid; /* Borde del formulario */
+    padding: 20px; /* Agrega padding para dar espacio interno */
+    max-width: 400px; /* Ancho máximo del formulario */
+    width: 100%; /* Ancho completo hasta el máximo especificado */
+    margin-left: auto; /* Alinea a la derecha */
+    margin-right: auto; /* Alinea a la izquierda */
+}
+
+input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 200px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
 }
 
 /* Media Queries */
@@ -62,33 +103,102 @@ header {
     .mobile-menu {
         display: flex;
         position: relative;
+        justify-content: flex-end; /* Alinear a la derecha */
+        width: 100%; /* Asegura que ocupe el ancho completo */
     }
     .desktop-icons {
-        display: none;
-    }
-    .dropdown {
-        left: -110px; /* Ajusta la posición a la izquierda */
+        display: none; /* Ocultar íconos en móviles */
     }
 }
 
 /* Para tabletas (481px a 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
+    .dropdown {
+        transform: translate(260%);
+
+    }
     .mobile-menu {
         display: flex;
         position: relative;
+        justify-content: flex-end; /* Alinear a la derecha */
+        width: 100%; /* Asegura que ocupe el ancho completo */
     }
     .desktop-icons {
-        display: none;
+        display: none; /* Ocultar íconos en tabletas */
     }
 }
 
 /* Para pantallas de 768px en adelante */
 @media (min-width: 768px) {
     .desktop-icons {
-        display: flex;
+        display: flex; /* Mostrar íconos de escritorio */
         gap: 15px;
     }
     .mobile-menu {
-        display: none;
+        display: none; /* Ocultar menú móvil */
+    }
+}
+
+/* Estilos para la sección de contenido */
+.content-container {
+    display: flex;
+    justify-content: center; /* Centra el contenido */
+    align-items: flex-start; /* Alinea el contenido al principio */
+    margin-top: 100px; /* Espacio debajo del header */
+}
+
+.text-box, .card {
+    border: 1px solid #ccc; /* Borde del cuadro */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    width: 40%; /* Aumenta el ancho del cuadro y tarjeta */
+    max-width: 400px; /* Ancho máximo */
+    text-align: center; /* Centrar texto */
+    margin: 10px; /* Espacio entre el texto y la tarjeta */
+}
+
+.card {
+    background-color: #fff; /* Fondo blanco para la tarjeta */
+}
+
+/* Estilos para imágenes dentro de la tarjeta */
+.card img {
+    width: 100%; /* Ancho completo de la tarjeta */
+    height: auto; /* Altura automática para mantener la proporción */
+    border-radius: 8px 8px 0 0; /* Bordes redondeados solo en la parte superior */
+}
+
+/* Estilos para móviles y tabletas */
+@media (max-width: 767px) {
+    .content-container {
+        flex-direction: column; /* Cambia la dirección del flex a columna */
+        align-items: center; /* Centra los elementos */
+    }
+
+    .text-box {
+        order: 2; /* Coloca el texto debajo de la tarjeta */
+        width: 90%; /* Ancho más pequeño para móviles */
+        max-width: none; /* Elimina el máximo ancho */
+        margin: 10px 0; /* Espacio entre texto y tarjeta */
+    }
+
+    .card {
+        order: 1; /* Coloca la tarjeta arriba */
+        width: 90%; /* Ancho más pequeño para móviles */
+        max-width: none; /* Elimina el máximo ancho */
+        margin: 10px 0; /* Espacio entre texto y tarjeta */
+    }
+}
+
+/* Ajustes para centrar en escritorio */
+@media (min-width: 768px) {
+    .content-container {
+        flex-direction: row; /* Mantiene la dirección en fila */
+        justify-content: center; /* Centra los elementos */
+    }
+
+    .text-box, .card {
+        width: 40%; /* Aumenta el ancho para que sean más grandes */
+        max-width: 400px; /* Ancho máximo */
     }
 }

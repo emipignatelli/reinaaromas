@@ -3,27 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header Responsive</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Reina Aromas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
     <header>
         <div class="logo">Mi Logo</div>
         <div class="desktop-icons">
-            <i class="fas fa-user"></i>
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-user" onclick="showLoginForm('desktop')"></i>
+            <i class="fas fa-shopping-cart"></i> <!-- Icono del carrito -->
         </div>
         <div class="mobile-menu">
             <div class="hamburger" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </div>
             <div class="dropdown" id="dropdown">
-                <a href="#">Inicio de sesión</a>
-                <a href="#">Carrito</a>
+                <a href="#" onclick="showLoginForm('mobile')">Inicio de sesión</a>
+                <a href="#">Carrito</a> <!-- Solo el carrito -->
             </div>
         </div>
     </header>
-    <script src="./js/main.js"></script>
+    
+    <!-- Formulario de inicio de sesión (inicialmente oculto) -->
+    <div id="login-form" class="form-container" style="display: none;">
+        <h2>Iniciar sesión</h2>
+        <div id="login-error" class="error-message"></div>
+        <div id="login-success" class="success-message"></div> <!-- Mensaje de éxito -->
+        <div id="login-session-message" style="display: none;"></div> <!-- Mensaje de sesión -->
+        <input type="email" id="email" placeholder="Ingrese email" required>
+        <input type="password" id="password" placeholder="Ingrese contraseña" required>
+        <button onclick="validateLogin()">Confirmar</button>
+        <p><a href="#" onclick="showResetForm()">¿Has olvidado tu contraseña?</a></p>
+        <p><a href="#" onclick="showSignupForm()">Si necesitas crear tu cuenta, haz click aquí</a></p>
+    </div>
+    
+    <!-- Formulario para restablecer contraseña (inicialmente oculto) -->
+    <div id="reset-form" class="form-container" style="display: none;">
+        <h2>Restablecer contraseña</h2>
+        <div id="reset-error" class="error-message"></div>
+        <div id="reset-success" class="success-message"></div> <!-- Mensaje de éxito -->
+        <input type="email" id="reset-email" placeholder="Ingrese email" required>
+        <input type="password" id="new-password" placeholder="Ingrese nueva contraseña" required>
+        <button onclick="validateReset()">Confirmar</button>
+    </div>
+    
+    <!-- Formulario de creación de cuenta (inicialmente oculto) -->
+    <div id="signup-form" class="form-container" style="display: none;">
+        <h2>Crear cuenta</h2>
+        <div id="signup-error" class="error-message"></div>
+        <div id="signup-success" class="success-message"></div> <!-- Mensaje de éxito -->
+        <input type="text" id="signup-name" placeholder="Nombre" required>
+        <input type="text" id="signup-surname" placeholder="Apellido" required>
+        <input type="email" id="signup-email" placeholder="Email (usuario)" required>
+        <input type="password" id="signup-password" placeholder="Contraseña" required>
+        <input type="password" id="confirm-password" placeholder="Confirmar contraseña" required>
+        <button onclick="validateSignup()">Crear cuenta</button>
+    </div>
+    
+    <div class="content-container">
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="Imagen representativa" class="card-image">
+            <div class="card-content">
+                <h3>Nombre del Emprendimiento</h3>
+                <p>Breve descripción o lema del emprendimiento.</p>
+            </div>
+        </div>
+        <div class="text-box">
+            <h2>Bienvenido a Nuestro Emprendimiento</h2>
+            <p>Este es un párrafo descriptivo donde puedes hablar sobre tu negocio, los servicios que ofreces, o cualquier información relevante que desees compartir con tus visitantes.</p>
+        </div>
+    </div>
+    
+<script src="js/main.js"></script>
 </body>
 </html>
