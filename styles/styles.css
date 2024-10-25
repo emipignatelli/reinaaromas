@@ -101,7 +101,7 @@ input {
 /* Para teléfonos móviles (hasta 480px) */
 @media (max-width: 480px) {
     .dropdown {
-        transform: translate(145%);
+        transform: translate(120%);
 
     }
     .mobile-menu {
