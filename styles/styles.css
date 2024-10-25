@@ -10,7 +10,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: white;
+    background-color: #f8f8f8;
     border-bottom: 1px solid #a5bde2;
     width: 100%;
     position: fixed;
@@ -113,10 +113,6 @@ input {
 
 /* Para tabletas (481px a 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
-    .dropdown {
-        transform: translate(260%);
-
-    }
     .mobile-menu {
         display: flex;
         position: relative;
@@ -177,14 +173,14 @@ input {
 
     .text-box {
         order: 2; /* Coloca el texto debajo de la tarjeta */
-        width: 90%; /* Ancho más pequeño para móviles */
+        width: 85%; /* Ancho ligeramente más pequeño para móviles */
         max-width: none; /* Elimina el máximo ancho */
         margin: 10px 0; /* Espacio entre texto y tarjeta */
     }
 
     .card {
         order: 1; /* Coloca la tarjeta arriba */
-        width: 90%; /* Ancho más pequeño para móviles */
+        width: 85%; /* Ancho ligeramente más pequeño para móviles */
         max-width: none; /* Elimina el máximo ancho */
         margin: 10px 0; /* Espacio entre texto y tarjeta */
     }
