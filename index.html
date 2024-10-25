@@ -11,7 +11,7 @@
     <header>
         <div class="logo">Mi Logo</div>
         <div class="desktop-icons">
-            <i class="fas fa-user" onclick="showLoginForm('desktop')"></i>
+            <i class="fas fa-user" onclick="toggleLoginForm('desktop')"></i>
             <i class="fas fa-shopping-cart"></i> <!-- Icono del carrito -->
         </div>
         <div class="mobile-menu">
@@ -19,9 +19,10 @@
                 <i class="fas fa-bars"></i>
             </div>
             <div class="dropdown" id="dropdown" style="display: none;">
-                <a href="#" onclick="showLoginForm('mobile')">Inicio de sesión</a>
+                <a href="#" onclick="toggleLoginForm('mobile')">Inicio de sesión</a>
                 <a href="#">Carrito</a> <!-- Solo el carrito -->
             </div>
+        </div>
     </header>
     
     <!-- Formulario de inicio de sesión (inicialmente oculto) -->
@@ -73,6 +74,7 @@
             <p>Este es un párrafo descriptivo donde puedes hablar sobre tu negocio, los servicios que ofreces, o cualquier información relevante que desees compartir con tus visitantes.</p>
         </div>
     </div>
+    
     
 <script src="js/main.js"></script>
 </body>

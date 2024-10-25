@@ -1,21 +1,43 @@
 function toggleMenu() {
     const dropdown = document.getElementById('dropdown');
-    dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+    const loginForm = document.getElementById('login-form');
+
+    // Solo permitir mostrar el menú si el formulario no está visible
+    if (loginForm.style.display !== 'flex') {
+        dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+    } else {
+        // Ocultar el formulario si el menú se despliega
+        loginForm.style.display = 'none';
+    }
 }
 
-function showLoginForm(type) {
+function toggleLoginForm(type) {
     const loginForm = document.getElementById('login-form');
     const resetForm = document.getElementById('reset-form');
     const signupForm = document.getElementById('signup-form');
 
-    // Ocultar otros formularios
-    loginForm.style.display = 'flex';
-    resetForm.style.display = 'none';
-    signupForm.style.display = 'none';
+    // Si el formulario de inicio de sesión está visible
+    if (loginForm.style.display === 'flex') {
+        loginForm.style.display = 'none';
+        resetForm.style.display = 'none';
+        signupForm.style.display = 'none';
+        
+        // Cerrar el menú en móvil si es visible
+        if (type === 'mobile') {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.style.display = 'none';
+        }
+    } else {
+        // Si no está visible, mostrarlo y ocultar los otros
+        loginForm.style.display = 'flex';
+        resetForm.style.display = 'none';
+        signupForm.style.display = 'none';
 
-    // Cerrar el menú en móvil
-    if (type === 'mobile') {
-        toggleMenu();
+        // Cerrar el menú en móvil
+        if (type === 'mobile') {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.style.display = 'none';
+        }
     }
 }
 
@@ -84,7 +106,6 @@ function validateReset() {
     const newPassword = document.getElementById('new-password').value;
     const resetError = document.getElementById('reset-error');
     const resetSuccess = document.getElementById('reset-success');
-    const resetSuccessMessage = document.getElementById('reset-success-message');
 
     // Obtener datos de cuentas del local storage
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
@@ -94,7 +115,6 @@ function validateReset() {
     if (!account) {
         resetError.textContent = 'Email no encontrado.';
         resetSuccess.textContent = '';
-        resetSuccessMessage.style.display = 'none';
         return;
     }
 
@@ -103,7 +123,6 @@ function validateReset() {
     localStorage.setItem('accounts', JSON.stringify(accounts));
     resetSuccess.textContent = 'Contraseña restablecida con éxito.';
     resetError.textContent = '';
-    resetSuccessMessage.style.display = 'block'; // Mostrar el mensaje
     document.getElementById('reset-form').style.display = 'none';
 }
 
@@ -115,13 +134,11 @@ function validateSignup() {
     const confirmPassword = document.getElementById('confirm-password').value;
     const signupError = document.getElementById('signup-error');
     const signupSuccess = document.getElementById('signup-success');
-    const signupSuccessMessage = document.getElementById('signup-success-message');
 
     // Validación de nombre y apellido
     if (!/^[a-zA-Z]+$/.test(name) || !/^[a-zA-Z]+$/.test(surname)) {
         signupError.textContent = 'El nombre y apellido solo pueden contener letras.';
         signupSuccess.textContent = '';
-        signupSuccessMessage.style.display = 'none';
         return;
     }
 
@@ -130,7 +147,6 @@ function validateSignup() {
     if (!emailPattern.test(email)) {
         signupError.textContent = 'Por favor, ingresa un email válido.';
         signupSuccess.textContent = '';
-        signupSuccessMessage.style.display = 'none';
         return;
     }
 
@@ -141,7 +157,6 @@ function validateSignup() {
     if (existingAccount) {
         signupError.textContent = 'Este email ya ha sido utilizado.';
         signupSuccess.textContent = '';
-        signupSuccessMessage.style.display = 'none';
         return;
     }
 
@@ -149,24 +164,21 @@ function validateSignup() {
     if (password.length > 8 || password.length < 1) {
         signupError.textContent = 'La contraseña debe tener un máximo de 8 caracteres.';
         signupSuccess.textContent = '';
-        signupSuccessMessage.style.display = 'none';
         return;
     }
 
     if (password !== confirmPassword) {
         signupError.textContent = 'Las contraseñas no coinciden.';
         signupSuccess.textContent = '';
-        signupSuccessMessage.style.display = 'none';
         return;
     }
 
     // Guardar cuenta en el local storage
     accounts.push({ name, surname, email, password });
     localStorage.setItem('accounts', JSON.stringify(accounts));
-    
+
     signupSuccess.textContent = 'Cuenta creada con éxito.';
     signupError.textContent = '';
-    signupSuccessMessage.style.display = 'block'; // Mostrar el mensaje
     document.getElementById('signup-form').style.display = 'none';
-    showLoginForm(); // Regresar al formulario de inicio de sesión
+    toggleLoginForm(); // Regresar al formulario de inicio de sesión
 }

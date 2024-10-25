@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: cadetblue;
+    background-color: rgb(185, 249, 252);
 }
 
 header {
@@ -80,7 +80,7 @@ header {
     border: rgb(86, 168, 245) solid; /* Borde del formulario */
     padding: 20px; /* Agrega padding para dar espacio interno */
     max-width: 400px; /* Ancho máximo del formulario */
-    width: 100%; /* Ancho completo hasta el máximo especificado */
+    width: 80%; /* Ancho completo hasta el máximo especificado */
     margin-left: auto; /* Alinea a la derecha */
     margin-right: auto; /* Alinea a la izquierda */
 }
