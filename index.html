@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reina Aromas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
@@ -12,7 +15,7 @@
         <div class="logo">Mi Logo</div>
         <div class="desktop-icons">
             <i class="fas fa-user" onclick="toggleLoginForm('desktop')"></i>
-            <i class="fas fa-shopping-cart"></i> <!-- Icono del carrito -->
+            <i class="fas fa-shopping-cart" id="carrito" onclick="mostrarCarrito()"></i> <!-- Icono del carrito -->
         </div>
         <div class="mobile-menu">
             <div class="hamburger" onclick="toggleMenu()">
@@ -20,7 +23,7 @@
             </div>
             <div class="dropdown" id="dropdown" style="display: none;">
                 <a href="#" onclick="toggleLoginForm('mobile')">Inicio de sesión</a>
-                <a href="#">Carrito</a> <!-- Solo el carrito -->
+                <a href="#" id="carritoDropdown">Carrito</a> <!-- Carrito añadido de nuevo -->
             </div>
         </div>
     </header>
@@ -75,7 +78,328 @@
         </div>
     </div>
     
+    <div class="sections-container">
+        <div class="section-links">
+            <a href="#section1">Sección 1</a>
+            <a href="#section2">Sección 2</a>
+            <a href="#section3">Sección 3</a>
+            <a href="#section4">Sección 4</a>
+        </div>
+        
+        <h3>Sección 1</h3>
+        <div class="sections">
+            <div id="section1" class="section-card">
+                <div class="flex flex-wrap justify-center">
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 1</h4>
+                            <p class="text-gray-700">Descripción breve del producto 1. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$19.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 2</h4>
+                            <p class="text-gray-700">Descripción breve del producto 2. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$29.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 3</h4>
+                            <p class="text-gray-700">Descripción breve del producto 3. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$39.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 4</h4>
+                            <p class="text-gray-700">Descripción breve del producto 4. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$49.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 5</h4>
+                            <p class="text-gray-700">Descripción breve del producto 5. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$59.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Sección 2</h3>
+        <div class="sections">
+            <div id="section2" class="section-card">
+                <div class="flex flex-wrap justify-center">
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 6</h4>
+                            <p class="text-gray-700">Descripción breve del producto 6. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$19.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 7</h4>
+                            <p class="text-gray-700">Descripción breve del producto 7. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$29.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 8</h4>
+                            <p class="text-gray-700">Descripción breve del producto 8. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$39.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 9</h4>
+                            <p class="text-gray-700">Descripción breve del producto 9. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$49.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 10</h4>
+                            <p class="text-gray-700">Descripción breve del producto 10. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$59.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Sección 3</h3>
+        <div class="sections">
+            <div id="section3" class="section-card">
+                <div class="flex flex-wrap justify-center">
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 11</h4>
+                            <p class="text-gray-700">Descripción breve del producto 11. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$19.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 12</h4>
+                            <p class="text-gray-700">Descripción breve del producto 12. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$29.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 13</h4>
+                            <p class="text-gray-700">Descripción breve del producto 13. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$39.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 14</h4>
+                            <p class="text-gray-700">Descripción breve del producto 14. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$49.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 15</h4>
+                            <p class="text-gray-700">Descripción breve del producto 15. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$59.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     
-<script src="js/main.js"></script>
+        <h3>Sección 4</h3>
+        <div class="sections">
+            <div id="section4" class="section-card">
+                <div class="flex flex-wrap justify-center">
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 16</h4>
+                            <p class="text-gray-700">Descripción breve del producto 16. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$19.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 17</h4>
+                            <p class="text-gray-700">Descripción breve del producto 17. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$29.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 18</h4>
+                            <p class="text-gray-700">Descripción breve del producto 18. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$39.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 19</h4>
+                            <p class="text-gray-700">Descripción breve del producto 19. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$49.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white shadow-md rounded-lg p-4 max-w-xs mx-2 mb-4">
+                        <img src="https://via.placeholder.com/150" alt="Producto" class="rounded-t-lg">
+                        <div class="p-2">
+                            <h4 class="text-lg font-bold">Producto 20</h4>
+                            <p class="text-gray-700">Descripción breve del producto 20. Ideal para captar la atención.</p>
+                            <span class="text-xl font-semibold">$59.99</span>
+                            <button class="mt-2 bg-blue-500 text-white rounded-md py-1 px-2 hover:bg-blue-600">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="carritoModal" tabindex="-1" role="dialog" aria-labelledby="carritoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carritoModalLabel">Tu Carrito</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="contenidoCarrito">El carrito está vacío.</div>
+                    <button id="confirmarCompra" class="btn btn-primary mt-3" style="display: none;">¿Deseas confirmar la compra?</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="confirmacionModal" tabindex="-1" role="dialog" aria-labelledby="confirmacionModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmacionModalLabel">Confirmar Compra</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Por favor, completa los datos para proceder con el pago:</p>
+                    <form id="pagoForm">
+                        <div class="form-group">
+                            <label for="tarjeta">Número de Tarjeta</label>
+                            <input type="text" class="form-control" id="tarjeta" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="codigo">Código de Seguridad</label>
+                            <input type="text" class="form-control" id="codigo" placeholder="XXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vencimiento">Fecha de Vencimiento</label>
+                            <input type="text" class="form-control" id="vencimiento" placeholder="MM/AA" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="tuemail@example.com" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="pagar">Pagar</button>
+                    <button type="button" class="btn btn-secondary" id="cancelarCompra">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark text-white pt-4 pb-2">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>Ubicación</h5>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i><br>
+                        Calle Ejemplo 123, Ciudad<br>
+                        País
+                    </p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Síguenos</h5>
+                    <a href="https://www.instagram.com" target="_blank" class="text-white">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Envíos a Domicilio</h5>
+                    <p>
+                        <i class="fas fa-truck"></i><br>
+                        Envíos rápidos y seguros a tu puerta.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h5>Contacto</h5>
+                    <p>
+                        <i class="fas fa-envelope"></i> 
+                        contacto@ejemplo.com<br>
+                        <i class="fas fa-phone"></i> 
+                        +123 456 7890
+                    </p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <p>&copy; 2024 Emiliano Pignatelli. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    
+    
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
+    <script src="js/main.js"></script>
 </body>
 </html>

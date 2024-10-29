@@ -182,3 +182,93 @@ function validateSignup() {
     document.getElementById('signup-form').style.display = 'none';
     toggleLoginForm(); // Regresar al formulario de inicio de sesión
 }
+
+
+    // Array para almacenar los productos en el carrito
+    let carrito = []; // Array para almacenar los productos en el carrito
+
+// Función para agregar un producto al carrito
+function agregarAlCarrito(nombre, precio) {
+    carrito.push({ nombre, precio });
+    actualizarCarrito();
+}
+
+// Función para actualizar el contenido del carrito
+function actualizarCarrito() {
+    const contenidoCarrito = document.getElementById('contenidoCarrito');
+    contenidoCarrito.innerHTML = ''; // Limpiar contenido anterior
+
+    if (carrito.length === 0) {
+        contenidoCarrito.innerHTML = 'El carrito está vacío.';
+        document.getElementById('confirmarCompra').style.display = 'none'; // Ocultar botón si está vacío
+        return;
+    }
+
+    let total = 0; // Inicializar total
+    carrito.forEach((producto, index) => {
+        total += producto.precio;
+        contenidoCarrito.innerHTML += `
+            <div class="d-flex justify-content-between">
+                <span>${producto.nombre} - $${producto.precio.toFixed(2)}</span>
+                <button class="btn btn-danger btn-sm" onclick="eliminarDelCarrito(${index})">-</button>
+            </div>
+        `;
+    });
+
+    contenidoCarrito.innerHTML += `<div><strong>Total: $${total.toFixed(2)}</strong></div>`;
+    document.getElementById('confirmarCompra').style.display = 'block'; // Mostrar botón si hay productos
+}
+
+// Función para eliminar un producto del carrito
+function eliminarDelCarrito(index) {
+    carrito.splice(index, 1);
+    actualizarCarrito();
+}
+
+// Evento para abrir el modal del carrito al hacer clic en el icono
+document.querySelector('.fa-shopping-cart').addEventListener('click', function() {
+    $('#carritoModal').modal('show');
+    actualizarCarrito(); // Asegurarse de que el carrito esté actualizado al abrir
+});
+
+// Agregar el evento para mostrar el carrito desde el menú móvil
+document.getElementById('carritoDropdown').addEventListener('click', function() {
+    $('#carritoModal').modal('show');
+    actualizarCarrito(); // Asegurarse de que el carrito esté actualizado al abrir
+});
+
+// Función para manejar la confirmación de compra
+document.getElementById('confirmarCompra').addEventListener('click', function() {
+    if (carrito.length === 0) return; // No hacer nada si el carrito está vacío
+    $('#carritoModal').modal('hide'); // Cerrar el modal del carrito
+    $('#confirmacionModal').modal('show'); // Mostrar el modal de confirmación
+});
+
+// Event listener para el botón de pagar
+document.getElementById('pagar').addEventListener('click', function() {
+    const tarjeta = document.getElementById('tarjeta').value;
+    const codigo = document.getElementById('codigo').value;
+    const vencimiento = document.getElementById('vencimiento').value;
+    const email = document.getElementById('email').value;
+
+    // Aquí iría la lógica para procesar el pago
+    alert(`Procesando el pago para la tarjeta: ${tarjeta}`); // Mensaje temporal
+    $('#confirmacionModal').modal('hide'); // Cerrar modal de confirmación
+    carrito = []; // Vaciar el carrito después de la compra
+    actualizarCarrito(); // Actualizar el UI del carrito
+});
+
+// Event listener para cancelar la compra
+document.getElementById('cancelarCompra').addEventListener('click', function() {
+    $('#confirmacionModal').modal('hide'); // Cerrar modal de confirmación
+    $('#carritoModal').modal('show'); // Regresar al modal del carrito
+});
+
+// Ejemplo de cómo agregar un producto al carrito (esto debería estar en tus botones "Comprar")
+document.querySelectorAll('.product-card button').forEach((button) => {
+    button.addEventListener('click', function() {
+        const nombre = this.parentElement.querySelector('h4').innerText;
+        const precio = parseFloat(this.parentElement.querySelector('span').innerText.replace('$', ''));
+        agregarAlCarrito(nombre, precio);
+    });
+});

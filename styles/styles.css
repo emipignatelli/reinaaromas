@@ -100,6 +100,20 @@ input {
 
 /* Para teléfonos móviles (hasta 480px) */
 @media (max-width: 480px) {
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20%; /* Espacio debajo del header */
+        border: rgb(86, 168, 245) solid; /* Borde del formulario */
+        padding: 20px; /* Agrega padding para dar espacio interno */
+        max-width: 400px; /* Ancho máximo del formulario */
+        width: 80%; /* Ancho completo hasta el máximo especificado */
+        margin-left: auto; /* Alinea a la derecha */
+        margin-right: auto; /* Alinea a la izquierda */
+    }
+    
     .dropdown {
         transform: translate(130%);
 
@@ -117,6 +131,19 @@ input {
 
 /* Para tabletas (481px a 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20%; /* Espacio debajo del header */
+        border: rgb(86, 168, 245) solid; /* Borde del formulario */
+        padding: 20px; /* Agrega padding para dar espacio interno */
+        max-width: 400px; /* Ancho máximo del formulario */
+        width: 80%; /* Ancho completo hasta el máximo especificado */
+        margin-left: auto; /* Alinea a la derecha */
+        margin-right: auto; /* Alinea a la izquierda */
+    }
     .mobile-menu {
         display: flex;
         position: relative;
@@ -125,6 +152,9 @@ input {
     }
     .desktop-icons {
         display: none; /* Ocultar íconos en tabletas */
+    }
+    .dropdown {
+        transform: translate(210%);
     }
 }
 
@@ -151,7 +181,7 @@ input {
     border: 1px solid #ccc; /* Borde del cuadro */
     border-radius: 8px; /* Bordes redondeados */
     padding: 20px; /* Espaciado interno */
-    width: 40%; /* Aumenta el ancho del cuadro y tarjeta */
+    width: 40%; /* Ancho de cada tarjeta */
     max-width: 400px; /* Ancho máximo */
     text-align: center; /* Centrar texto */
     margin: 10px; /* Espacio entre el texto y la tarjeta */
@@ -201,4 +231,80 @@ input {
         width: 40%; /* Aumenta el ancho para que sean más grandes */
         max-width: 400px; /* Ancho máximo */
     }
+}
+
+
+
+/* Estilos generales para el contenedor de secciones */
+.sections-container {
+    margin-top: 20px; /* Espacio superior */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilos para los enlaces de las secciones */
+.section-links {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    gap: 20px; /* Espacio entre enlaces */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+.sections {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+/* Estilos para cada sección */
+.section-card {
+    display: flex;
+    margin-bottom: 20px; /* Espacio entre secciones */
+    justify-content: space-between;
+    align-items:center;
+}
+
+/* Estilos para la tarjeta de producto */
+.product-card {
+    margin-top: 20px; /* Espacio superior antes de la tarjeta */
+    justify-content: center;
+    align-items: ceenter
+    ;
+}
+
+ 
+@media (max-width: 768px) {
+    .sections {
+        flex-direction: column; /* Cambia la dirección a columna */
+        align-items: center; /* Centra las tarjetas */
+    }
+
+    .section-card {
+        flex-direction: column; /* Las tarjetas también en columna */
+        align-items: center; /* Centra las tarjetas en la sección */
+    }
+}
+
+footer {
+    background-color: #343a40; /* Color de fondo oscuro */
+}
+
+footer h5 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+footer .fa {
+    margin-right: 0.5rem; /* Espaciado entre icono y texto */
+}
+
+footer .fab {
+    color: #f0f0f0; /* Color de íconos de redes sociales */
+}
+
+footer .fab:hover {
+    color: #ffffff; /* Cambio de color al pasar el mouse */
 }
