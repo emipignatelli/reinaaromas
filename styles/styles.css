@@ -23,6 +23,11 @@ header {
     margin-left: 20px; /* Espacio a la izquierda */
 }
 
+.logo img {
+    max-height: 50px; /* Ajusta esta altura según sea necesario */
+    width: auto; /* Mantiene la proporción de la imagen */
+}
+
 .desktop-icons {
     display: flex;
     gap: 15px;
